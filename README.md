@@ -18,5 +18,38 @@
 
 Test the live HTTP 402 payment challenge handshake directly from your terminal:
 
-```bash
-curl -i -X GET "[https://agentfi.vip/v1/extract](https://agentfi.vip/v1/extract)"
+    curl -i -X GET "https://agentfi.vip/v1/extract"
+
+### Expected Gateway Challenge (`HTTP/1.1 402 Payment Required`)
+The gateway responds with deterministic x402 V2 payment headers specifying the Base L2 USDC recipient, atomic amount (`$0.05 USDC`), and anti-replay nonce:
+
+    HTTP/1.1 402 Payment Required
+    Content-Type: application/json
+    X-Protocol-Version: x402-v2
+    X-Network-Chain-Id: 8453
+    X-Payment-Token: USDC
+
+    {
+      "error": "payment_required",
+      "protocol": "x402-v2",
+      "amount_usdc": "0.05",
+      "chain_id": 8453,
+      "message": "Attach signed Base L2 USDC payment proof header to execute extraction."
+    }
+
+---
+
+## 3. Core Architectural Guarantees
+
+1. **Zero-Gas Offline Cryptographic Verification:** Eliminates on-chain verification latency at the edge while maintaining sub-500ms global response times via Cloudflare Zero Trust SSL.
+2. **Idempotent Retry Protection:** On-chain transaction hashes and payment proofs act as deterministic idempotency keys in the replay-protection ledger—mid-flight connection drops never trigger double-charging.
+3. **Gateway-Level Spend Dampers:** Enforces per-agent rate and budget circuit breakers outside the LLM context window to prevent recursive token burn.
+4. **Atomic Non-Custodial Settlement:** No user balances held; if upstream extraction fails schema integrity checks, settlement aborts prior to final commit.
+
+---
+
+## 4. Collaboration & Contact
+
+* **Architect:** Yixuan Li (Kelly) — Protocol & Automation Architect | MBA (Distinction, mBridge CBDC & Agent Payment Rails)
+* **Open For:** AI Agent / Stablecoin Ecosystem Integrations, Technical Advisory, and Remote Protocol / Solutions Architect Roles
+* **Direct Inquiry:** `artmcclellan2521995@gmail.com`
