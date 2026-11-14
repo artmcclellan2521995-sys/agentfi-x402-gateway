@@ -1,10 +1,5 @@
 # AgentFi — Stateless HTTP 402 (x402 V2) M2M Micro-Clearing Gateway
 
-[![Protocol](https://img.shields.io/badge/Protocol-HTTP%20402%20%2F%20x402%20V2-0284c7)]()
-[![Network](https://img.shields.io/badge/Settlement-Base%20L2%20USDC%20(8453)-0f172a)]()
-[![SLA](https://img.shields.io/badge/Edge%20SLA-%3C%20500ms-10b981)]()
-[![Custody](https://img.shields.io/badge/Architecture-Non--Custodial%20%2F%20Zero--Gas-334155)]()
-
 **AgentFi** is a production-grade, stateless machine-to-machine (M2M) payment gateway bridging wholesale multilateral clearing logic with high-frequency autonomous AI agent micro-transactions.
 
 ---
