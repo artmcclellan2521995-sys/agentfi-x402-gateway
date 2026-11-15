@@ -1,5 +1,5 @@
 # AgentFi — Stateless HTTP 402 (x402 V2) M2M Micro-Clearing Gateway
-
+> **Live Interactive Playground:** https://sprightly-unicorn-59c755.netlify.app *(Simulate the HTTP 402 handshake & Base L2 USDC verification in your browser)*
 **AgentFi** is a production-grade, stateless machine-to-machine (M2M) payment gateway bridging wholesale multilateral clearing logic with high-frequency autonomous AI agent micro-transactions.
 
 ---
